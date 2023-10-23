@@ -34,7 +34,7 @@ FROM jammy:latest
 
 # Create a user named "peter" with the desired password
 RUN useradd -m -s /bin/bash peter
-RUN echo 'peter:guiltyspark' | chpasswd
+RUN echo 'peter:***' | chpasswd
 
 # Add "peter" to the sudo group
 RUN usermod -aG sudo peter
@@ -48,7 +48,6 @@ RUN apt-get update && apt-get install -y libpng-dev
 # (Optional) Set a working directory
 WORKDIR /app
 
-# COPY convert.sh /app/
 COPY hgt2png /app/
 
 # Your further Dockerfile instructions (if any) go here
@@ -64,6 +63,6 @@ docker build -t hgt2png .
 Run container
 =============
 
-docker run -it -v /home/peter/Projects/docker:/home/peter --rm --user peter --name hgt2png hgt2png ./hgt2png /home/peter/0104_5681x3961.HGT /home/peter/0104_5681x3961.PNG
+docker run -it -v /home/peter/Projects/docker:/home/peter --rm --user peter --name hgt2png hgt2png ./hgt2png /home/peter/n46E011.hgt /home/peter/n46E011.png
 
 
